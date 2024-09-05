@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+
+	<!-- 서버 내부 매핑법...(원래 여기에는 주석도 안 담...민감) -->
+	<servlet>
+	
+		<servlet-name>MyGenericServlet</servlet-name>
+		<!-- 서블릿 클래스 이름 -->
+		
+		<servlet-class>web.generic.servlet.MyGenericServlet</servlet-class>
+		<!-- 서블릿 클래스패스 -->
+	
+	</servlet>
+	
+	<!-- 클라이언트 매핑 -->
+	
+	<servlet-mapping>
+	
+		<servlet-name>MyGenericServlet</servlet-name>
+		<!-- 서블릿 클래스 이름 -->
+		
+		<url-pattern>/MGS</url-pattern>
+		<!-- 클라이언트가 서블릿을 어떤 이름으로 부를지 (서블릿의 별칭) -->
+		<!-- 이 땐 반드시 '/'가 있어야 함 -->
+	
+	</servlet-mapping>
+</web-app>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+
+  <body>
+    <h2>==== 로그인 폼 ====</h2>
+    <!-- 
+	폼 태그의 속성은 
+	1. action - 필수 속성
+	2. method
+		get 방식이 디폴트 (따로 지정하지 않으면 get 방식으로 진행됨)
+		post 방식
+	 -->
+
+    <form action="FS" method="get">
+      id<input type="text" name="userId" /><br /><br />
+      pass<input type="password" name="userPass" />
+      <input type="submit" value="login" />
+      <!-- input type="submit" 인 버튼에 표시되는 문구를 변경하고 싶으면 value 속성에 문구 값을 넣으면 됨 -->
+    </form>
+  </body>
+</html>

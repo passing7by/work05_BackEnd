@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Accordion - Default functionality</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/sunny/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+  
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion({
+		heightStyle: 'content' //컨텐트에 맞게 어코디언의 높이를 조절하는 옵션
+    });
+    
+    //1. h3 태그를 클릭하면...
+    $("#accordion h3").click (function(){
+	/* alert("hhi"); */
+		
+		//2.
+		let text = $(this).text();
+		/* alert(text); */
+		
+		//3.
+		if(text=="Full Stack Subject"){
+			$.ajax({
+				type: 'post',
+				url: 'front.do?command=subject',
+						
+				success: function(result){
+					$("#subject").html(result);
+				}
+			});//ajax
+		}else if(text=="Association Global IT Company"){
+			$.ajax({
+				type: 'post',
+				url: 'front.do?command=company',
+						
+				success: function(result){
+					$("#company").html(result);
+				}
+			});//ajax
+		}
+		
+		//4. 버튼 클릭하면 함수 호출되도록
+		$("#creation").on("click", function (){
+			let footer = "<h3>The way go to Kosta</h3><div>서울시 종로구 우정국로 2길 21 대왕빌딩 7층</div>";
+			//동적으로 어코디언을 만들 때는 'destroy'옵션으로 이전 어코디언을 완전히 삭제한 다음에 다시 어코디언 생성
+			
+			//버튼부터 없앤다.
+			$(this).remove();
+			$("#accordion").append(footer).accordion("destroy").accordion({
+				heightStyle: "content"
+			});
+		})	
+	});
+  } );//ready
+  </script>
+</head>
+<body>
+	 
+	<div id="accordion">
+	  <h3>Kosta Education Introduction</h3>
+	  <div>
+	  	Infra운영. Front-End 개발. DB Back-End 개발. AI SW요구분석 네트워크. SW테스팅 리눅스 보안. SW프로젝트관리 데이터 엔지니어링. SW아키텍처 설계. SW상세 설계
+	  	
+	  	Full Stack 개발자 양성을 위한 교육기관입니다.
+	  </div>
+	  
+	  <h3>Full Stack Subject</h3>
+	  <div id="subject">
+	  </div>
+	  
+	  <h3>Association Global IT Company</h3>
+	  <div id="company">
+	  </div>
+	</div>
+
+	<hr>
+	<input type="button" value="Creation Accordion Section" id="creation">
+ 
+ 
+ 
+ 
+</body></html>

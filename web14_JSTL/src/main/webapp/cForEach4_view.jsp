@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+	<h2>우리 가게에서 판매되는 과일들입니다.</h2>
+	<c:forEach items="${list}" var="item">
+		${item} <!-- 출력할 땐 el로 -->
+	</c:forEach>
+</body>
+</html>
