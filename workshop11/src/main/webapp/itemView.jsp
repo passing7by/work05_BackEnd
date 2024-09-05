@@ -54,6 +54,9 @@ pageEncoding="UTF-8"%>
       #item-info * {
         margin: 20px;
       }
+      #toItemList {
+        text-align: center;
+      }
     </style>
   </head>
 
@@ -75,6 +78,10 @@ pageEncoding="UTF-8"%>
         <p id="item-price">가 격 : ${item.price}</p>
         <p id="item-desc">설 명 : ${item.description}</p>
       </div>
+    </div>
+
+    <div id="toItemList">
+      <a href="itemList.jsp"><h4>상품 목록 가기</h4></a>
     </div>
   </body>
 </html>
