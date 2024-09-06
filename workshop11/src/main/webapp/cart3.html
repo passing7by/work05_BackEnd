@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <style>
+      table * {
+        border: 1px solid gray;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>번호</th>
+        <th>상품이미지</th>
+        <th>상품명</th>
+        <th>상품가격</th>
+        <th>수량</th>
+        <th>삭제</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>상품이미지</td>
+        <td>포도</td>
+        <td class="prod-price">1000</td>
+        <td class="prod-quantity">
+          <input type="button" class="button-quantity" value="+" />
+          <p class="current-quantity">0</p>
+          <input type="button" class="button-quantity" value="-" />
+        </td>
+        <td>삭제</td>
+      </tr>
+
+      <tr>
+        <td colspan="6" id="totalPrice">0</td>
+      </tr>
+    </table>
+  </body>
+
+  <script>
+    // 모든 .button-quantity 요소를 선택하여 각 요소에 대해 이벤트 리스너를 추가합니다.
+    //[같은 클래스를 가지는 버튼이 여러개인 경우, 모든 버튼에 대한 배열을 선택한 후,
+    //배열을 순회하며 클릭 이벤트를 모든 요소에 할당해야 함]
+    document.querySelectorAll(".button-quantity").forEach((button) => {
+      button.addEventListener("click", function () {
+        let buttonVal = this.value; // 버튼의 value 값을 가져옵니다.
+        let tr = this.closest("tr"); // 현재 버튼이 속한 tr 요소를 찾습니다.
+
+        let curQuantity = tr.querySelector(".current-quantity"); // 현재 수량을 표시하는 요소를 찾습니다.
+        let curQuantityText = curQuantity.innerText.trim(); // 현재 수량의 텍스트를 가져옵니다.
+        let curQuantityInt = parseInt(curQuantityText, 10); // 텍스트를 정수로 변환합니다.
+
+        if (buttonVal == "+") {
+          // "+" 버튼 클릭 시 수량을 증가시킵니다.
+          curQuantity.innerText = curQuantityInt + 1;
+        } else if (buttonVal == "-" && curQuantityInt > 0) {
+          // "-" 버튼 클릭 시 수량을 감소시킵니다.
+          curQuantity.innerText = curQuantityInt - 1;
+        }
+      });
+    });
+
+    // let button = document
+    //   .querySelector(".button-quantity")
+    //   .addEventListener("click", function () {
+    //     let buttonId = this.getAttribute("id"); //버튼의 value(+, -)
+    //     alert(buttonId);
+    //     let tr = this.closest("tr"); //부모인 tr의 객체
+
+    //     let curQuantity = tr.querySelector(".current-quantity"); //객체
+    //     let curQuantityText = curQuantity.innerText; //객체
+    //     let curQuantityInt = parseInt(curQuantityText); //값
+
+    //     if (buttonId == "plus") {
+    //       //+버튼 기능
+    //       curQuantity.innerText = curQuantityInt - 1;
+    //     } else if (buttonId == "minus") {
+    //       //+버튼 기능
+    //       curQuantity.innerText = curQuantityInt - 1;
+    //     } //if
+    //   });
+
+    // function updateTotalPrice() {
+    //   let totalPrice = 0;
+
+    //   // 모든 행을 반복
+    //   document.querySelectorAll("tr").forEach((row) => {
+    //     const prodQuantity = row.querySelector(".prod-quantity");
+    //     const prodPrice = row.querySelector(".prod-price");
+
+    //     if (prodQuantity && prodPrice) {
+    //       const quantity = parseInt(prodQuantity.innerText);
+    //       const price = parseInt(prodPrice.innerText);
+    //       totalPrice += quantity * price;
+    //     }
+    //   });
+
+    //   // 총 가격 업데이트
+    //   document.getElementById("totalPrice").innerText = totalPrice;
+    // }
+
+    //this 후에 형제요소를 찾아오는 것이 아닌,
+    //사용할 모든 요소가 속해 있는 부모 요소를 불러와서 : this.closest("선택자"),
+    //부모요소.querySelector()를 사용하여 필요한 각 요소를 찾아옴
+
+    // function count(button, type) {
+    //   // 버튼이 속한 행의 모든 요소를 찾음
+    //   const row = button.closest("tr");
+
+    //   // 현재 행의 수량과 가격 요소 찾기
+    //   const prodQuantity = row.querySelector(".prod-quantity");
+    //   const prodPrice = row.querySelector(".prod-price").innerText;
+
+    //   // 현재 화면에 표시된 값
+    //   let currentNum = parseInt(prodQuantity.innerText);
+
+    //   // 더하기/빼기
+    //   if (type === "plus") {
+    //     currentNum++;
+    //   } else if (type === "minus" && currentNum > 0) {
+    //     currentNum--;
+    //   }
+
+    //   // 결과 출력
+    //   prodQuantity.innerText = currentNum;
+
+    //   // 전체 가격 계산 및 업데이트
+    //   updateTotalPrice();
+    // }
+
+    // function updateTotalPrice() {
+    //   let totalPrice = 0;
+
+    //   // 모든 행을 반복
+    //   document.querySelectorAll("tr").forEach((row) => {
+    //     const prodQuantity = row.querySelector(".prod-quantity");
+    //     const prodPrice = row.querySelector(".prod-price");
+
+    //     if (prodQuantity && prodPrice) {
+    //       const quantity = parseInt(prodQuantity.innerText);
+    //       const price = parseInt(prodPrice.innerText);
+    //       totalPrice += quantity * price;
+    //     }
+    //   });
+
+    //   // 총 가격 업데이트
+    //   document.getElementById("totalPrice").innerText = totalPrice;
+    // }
+  </script>
+</html>
